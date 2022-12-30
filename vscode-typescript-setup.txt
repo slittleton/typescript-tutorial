@@ -1,0 +1,21 @@
+
+
+1) install node js
+2) update npm
+3) install typescript 
+
+sudo npm install -g typescript ts-node
+
+4) download/install VS-Code
+
+5) Install code command in Path for VS Code
+    - go to view
+    - open command palette
+    - search for "install path" and click on "install code command in path" 
+    - Note::: You may do this step in the initial install of VS Code so you don't have to do it here
+
+6)
+
+
+
+

@@ -1,0 +1,23 @@
+
+--------------------------------------
+To enable google maps go to:
+
+https://console.developers.google.com
+
+create a new project
+
+enable maps api for Javascript Maps API
+
+use api key
+AIzaSyCQdYCCfdcBkY-MNHP1XsuBy5SyXyeNh30
+
+
+
+---------------------------------------
+
+Global Variable - google
+
+installing the @types/google.maps for google maps and putting the script element in the HTML
+gives us a global variable called "google" which you can then use in your .ts files
+
+---------------------------------------

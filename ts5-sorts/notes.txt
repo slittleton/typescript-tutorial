@@ -1,0 +1,69 @@
+=======================
+==== PROJECT SETUP ====
+=======================
+
+
+
+Generate ts config file
+
+tsc index.ts
+---------------------------------------------------------------------------------
+
+======================================
+Compile TS to JS and watch for changes
+======================================
+
+In ts config file use 
+
+"rootDir": to set target folder for typscript files you want compiled to js
+
+"outDir": to set the target folder for where you want ts that have been compiled js files to be placed
+
+to have the compiler for typescript compile all files in rootDir put command in terminal:
+
+  tsc -w
+
+the -w tells  typescript to watch the rootDir so you only need to run "tsc -w" once and
+typescript will compile your code to the js-build folder whenever you save your .ts files
+
+------------------------------------------------------------------------------------
+============================
+Run js files in build folder
+============================
+
+to run a specific file enter command:
+   node build/index.js
+
+
+
+generate package.json and install nodemon and concurrently
+
+  npm init -y
+
+  npm install nodemon concurrently
+
+
+nodemon - reruns node evertime we save
+concurrently - runs multiple scripts at same time
+
+In the package.json modify the scripts object to have a script for compiling typescript and a script
+for running nodemon with the specific main file for the project. The last script in the object uses
+concurrently to run all other scripts in the object at the same time
+
+  "scripts": {
+    "start:build": "tsc -w",
+    "start:run": "nodemon build/index.js",
+    "start": "concurrently npm:start:*"
+  },
+
+use command to start running all scripts in package.json
+    
+    npm start
+
+
+-------------------------------------------------------------------------------------------------------------
+
+
+
+
+

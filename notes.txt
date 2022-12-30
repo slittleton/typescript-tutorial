@@ -1,0 +1,23 @@
+
+
+
+==========================
+== Compile and run file ==
+==========================
+
+1) compile file to typescript
+
+tsc <name-of-file>.ts
+
+2) run compiled js file
+
+node <name-of-fle>.js
+
+3) Compile and run simultaneously
+
+ts-node <name-of-file>.ts
+
+
+
+
+
