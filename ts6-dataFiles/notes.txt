@@ -1,0 +1,38 @@
+=========================
+Creating Project Commands 
+=========================
+
+tsc --init
+
+npm init -y
+
+npm install nodemon concurrently
+
+==========================
+additonal project setup
+=======================
+
+create an src folder
+
+ ---- modify tsconfig.json ----
+also make sure to uncomment the lines in the tsconfig.json
+
+  "rootDir": "./src",
+  "outDir": "./build",
+  
+---- modify scripts in package.json ----
+  modify file to use concurrently to execute multiple start scripts at once
+
+  "scripts": {
+    "start:build": "tsc -w",
+    "start:run": "nodemon build/index.js",
+    "start": "concurrently npm:start:*"
+  },
+
+---- start application ----
+  note: that if starting application for first time you will get an error
+  because the build folder will not be built by the time nodemon checks it 
+  so just run it a second time and the build folder will have something it it at that point
+
+
+  npm start
