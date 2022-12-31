@@ -14,48 +14,28 @@
 
 // bubble sort for an array
 
-class Sorter {
-  collection: number[] | string;
 
-  constructor(collection: number[] | string) {
-    this.collection = collection;
-  }
+import { CharactersCollection } from './CharactersCollection';
+import { NumbersCollection } from './NumberCollection';
+import { LinkedList } from './LinkedList';
 
-  // SORT 
-  sort(): void {
+//-------- Sort Array of numbers ---------
+const numbersCollection = new NumbersCollection([50, 3, -5, 0]);
+numbersCollection.sort();
+console.log(numbersCollection.data);
 
-    const { length } = this.collection;
+//------- Sort a string of characters----------
+const charactersCollection = new CharactersCollection('Xacghdfeayb');
+charactersCollection.sort();
+console.log(charactersCollection.data);
 
-    for (let i = 0; i < length; i++) {
-
-      for (let j = 0; j < length - i - 1; j++) {
-
-        //-----------------------------------
-        // check to see if need to swap and then swap in needed
-        // Check Array for swap
-        if (this.collection[j] > this.collection[j + 1]) {
-          const leftHand = this.collection[j];
-          this.collection[j] = this.collection[j + 1];
-          this.collection[j + 1] = leftHand;
-        }
-
-      // Check String for swap
-
-      // Check Linked List for swap
-
-      // -----------------------------------
+//------- Sort a linked list of numbers ----------
+const linkedList = new LinkedList();
+linkedList.add(500);
+linkedList.add(-10);
+linkedList.add(-3);
+linkedList.add(4);
+linkedList.sort();
+linkedList.print();
 
 
-      }
-
-    }
-
-  }
-
-// 
-
-
-}
-
-const sorter = new Sorter([10, 3, -5, 0]);
-console.log(sorter.collection);

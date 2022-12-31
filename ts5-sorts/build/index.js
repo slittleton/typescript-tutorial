@@ -1,6 +1,7 @@
 "use strict";
 // This project implements code to sort multiple different types fo data structures
 // using bubble sort
+Object.defineProperty(exports, "__esModule", { value: true });
 /*
   bubble sort uses two forloops
   it compares two values in a datastructure and if the element on the left is bigger than the
@@ -11,29 +12,22 @@
 
 */
 // bubble sort for an array
-class Sorter {
-    constructor(collection) {
-        this.collection = collection;
-    }
-    // SORT 
-    sort() {
-        const { length } = this.collection;
-        for (let i = 0; i < length; i++) {
-            for (let j = 0; j < length - i - 1; j++) {
-                //-----------------------------------
-                // check to see if need to swap and then swap in needed
-                // Check Array for swap
-                if (this.collection[j] > this.collection[j + 1]) {
-                    const leftHand = this.collection[j];
-                    this.collection[j] = this.collection[j + 1];
-                    this.collection[j + 1] = leftHand;
-                }
-                // Check String for swap
-                // Check Linked List for swap
-                // -----------------------------------
-            }
-        }
-    }
-}
-const sorter = new Sorter([10, 3, -5, 0]);
-console.log(sorter.collection);
+const CharactersCollection_1 = require("./CharactersCollection");
+const NumberCollection_1 = require("./NumberCollection");
+const LinkedList_1 = require("./LinkedList");
+//-------- Sort Array of numbers ---------
+const numbersCollection = new NumberCollection_1.NumbersCollection([50, 3, -5, 0]);
+numbersCollection.sort();
+console.log(numbersCollection.data);
+//------- Sort a string of characters----------
+const charactersCollection = new CharactersCollection_1.CharactersCollection('Xacghdfeayb');
+charactersCollection.sort();
+console.log(charactersCollection.data);
+//------- Sort a linked list of numbers ----------
+const linkedList = new LinkedList_1.LinkedList();
+linkedList.add(500);
+linkedList.add(-10);
+linkedList.add(-3);
+linkedList.add(4);
+linkedList.sort();
+linkedList.print();
