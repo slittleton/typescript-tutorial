@@ -36,3 +36,10 @@ also make sure to uncomment the lines in the tsconfig.json
 
 
   npm start
+
+
+======================================
+== install node.js type definitions ==
+======================================
+
+npm install @types/node
