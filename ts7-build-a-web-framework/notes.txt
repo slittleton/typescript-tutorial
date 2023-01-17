@@ -1,0 +1,63 @@
+
+
+=======================
+Project Setup
+=======================
+create package.json
+
+  npm init -y
+
+
+install parcel globally (unless it is already installed)
+
+  npm -g parcel-bundler
+
+
+install json server to act as a sort of database
+
+  npm install -g json-server
+
+create json file in root project folder called db.json
+in db.json add {"user":[]} and save
+
+
+
+to run json server
+
+  json-server -w db.json
+
+
+install axios
+
+  npm install axios
+
+start parcel
+
+  parcel index.html
+
+
+
+run parcel and json-server in two seperate terminals 
+
+    "scripts": {
+    "start:db": "json-server -w db.json",
+    "start:parcel": "parcel index.html",
+    
+  }
+
+to run these commands in the terminals
+
+  npm run start:db
+  npm run start:parcel
+
+  
+Generate a tsconfig file
+  tsc --init
+
+  make sure that tsconfig has
+  /* Type Checking */
+    "strict": true,  
+
+  this will set optional properties to being the property value or undefined
+  example id?: number | undefined 
+  all you have to write is the id?: number and typescript will infer that it can be undefined
