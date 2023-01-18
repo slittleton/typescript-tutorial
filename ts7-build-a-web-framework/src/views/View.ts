@@ -1,15 +1,24 @@
 import { HasId } from "../interfaces/HasId";
 import { Model } from "../models/Model";
 
-export abstract class View<T extends Model<K>,K extends HasId> {
+export abstract class View<T extends Model<K>, K extends HasId> {
 
-  abstract eventsMap(): { [key: string]: () => void; };
-  abstract template(): string;
-
+  regions: { [key: string]: Element; } = {};
 
   constructor(public parent: Element, public model: T) {
     this.bindModel();
   }
+
+  abstract template(): string;
+
+  regionsMap(): { [key: string]: string; } {
+    return {};
+  }
+
+  eventsMap(): { [key: string]: () => void; } {
+    return {};
+  }
+
 
   // update/cause a re-render of the page
   bindModel(): void {
@@ -34,6 +43,23 @@ export abstract class View<T extends Model<K>,K extends HasId> {
     }
   }
 
+  mapRegions(fragment: DocumentFragment): void {
+    const regionsMap = this.regionsMap();
+
+    for (let key in regionsMap) {
+      const selector = regionsMap[key];
+      const element = fragment.querySelectorAll(selector);
+      if (element) {
+        this.regions[key];
+      }
+
+    }
+  }
+
+  onRender = (): void => {
+
+  }
+
   render(): void {
 
     // delete any html that is already there 
@@ -45,6 +71,10 @@ export abstract class View<T extends Model<K>,K extends HasId> {
     templateElement.innerHTML = this.template();
 
     this.bindEvents(templateElement.content);
+
+    this.mapRegions(templateElement.content);
+
+    this.onRender();
 
     this.parent.append(templateElement.content);
   }

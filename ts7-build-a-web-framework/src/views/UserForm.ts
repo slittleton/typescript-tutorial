@@ -4,53 +4,40 @@ import { View } from './View';
 
 
 export class UserForm extends View<User, UserProps> {
-
-
-
-  // each event is has a key that is the event type
-  // and a function that returns nothingp
-  eventsMap(): { [key: string]: () => void; } {
+  eventsMap(): { [key: string]: () => void } {
     return {
+      'click:.set-age': this.onSetAgeClick,
       'click:.set-name': this.onSetNameClick,
-      'click:.set-age': this.onSetAgeClick
+      'click:.save-model': this.onSaveClick
     };
   }
 
-  onSetAgeClick = (): void => {
-    this.model.setRandomAge();
-
+  onSaveClick = (): void => {
+    this.model.save();
   };
 
   onSetNameClick = (): void => {
-    // user parent element to find input and get value from it
     const input = this.parent.querySelector('input');
-
 
     if (input) {
       const name = input.value;
+
       this.model.set({ name });
-    } else {
-      console.log('No name entered');
     }
+  };
 
-
+  onSetAgeClick = (): void => {
+    this.model.setRandomAge();
   };
 
   template(): string {
     return `
       <div>
-        <h1> User Form </h1>
-        <div> User name: ${this.model.get('name')}</div>
-        <div> User age: ${this.model.get('age')}</div>
-        <input>
+        <input placeholder="${this.model.get('name')}" />
         <button class="set-name">Change Name</button>
         <button class="set-age">Set Random Age</button>
+        <button class="save-model">Save User</button>
       </div>
     `;
   }
-
-
-
-
-  // end of class
 }
