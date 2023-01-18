@@ -1,40 +1,52 @@
+import { User } from '../models/User';
+import { UserProps } from '../interfaces/UserProps';
+import { View } from './View';
 
 
-export class UserForm {
+export class UserForm extends View<User, UserProps> {
 
-
-  constructor(public parent: Element) { }
 
 
   // each event is has a key that is the event type
-  // and a function that returns nothing
-  eventsMap(): { [key: string]:()=>void } {
+  // and a function that returns nothingp
+  eventsMap(): { [key: string]: () => void; } {
     return {
-      'click:button': this.onButtonClick
+      'click:.set-name': this.onSetNameClick,
+      'click:.set-age': this.onSetAgeClick
     };
   }
 
+  onSetAgeClick = (): void => {
+    this.model.setRandomAge();
 
-  onButtonClick(): void {
-    console.log('HI');
-  }
+  };
+
+  onSetNameClick = (): void => {
+    // user parent element to find input and get value from it
+    const input = this.parent.querySelector('input');
+
+
+    if (input) {
+      const name = input.value;
+      this.model.set({ name });
+    } else {
+      console.log('No name entered');
+    }
+
+
+  };
 
   template(): string {
     return `
       <div>
         <h1> User Form </h1>
+        <div> User name: ${this.model.get('name')}</div>
+        <div> User age: ${this.model.get('age')}</div>
         <input>
+        <button class="set-name">Change Name</button>
+        <button class="set-age">Set Random Age</button>
       </div>
     `;
-  }
-
-  render(): void {
-    const templateElement = document.createElement('template');
-
-
-    templateElement.innerHTML = this.template();
-
-    this.parent.append(templateElement.content);
   }
 
 
