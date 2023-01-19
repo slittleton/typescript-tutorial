@@ -1,0 +1,40 @@
+
+
+=====================
+=== Project Setup ===
+=====================
+
+Initial Setup
+
+  npm init -y
+
+  tsc --init
+
+  npm install concurrently nodemon
+
+
+Create build folder in root of Project
+
+Update tsc config file
+
+  "outDir": "./build",
+  "rootDir": "./src"
+
+
+Add scripts to package.json
+
+    "scripts": {
+    "start:build":"tsc -w",
+    "start:run": "nodemon build/index.js",
+    "start":"concurrently npm:start:*"
+  },
+
+Start application
+
+  npm start
+
+note: the first time you run npm start the build folder will initially be empty
+so you may see some error message. Start the application again and the build folder
+should now have content and the error messages should be gone
+
+
