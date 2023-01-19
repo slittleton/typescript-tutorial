@@ -12,6 +12,7 @@ Initial Setup
 
   npm install concurrently nodemon
 
+  npm install express body-parser cookie-session
 
 Create build folder in root of Project
 
