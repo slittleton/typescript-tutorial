@@ -14,6 +14,8 @@ Initial Setup
 
   npm install express body-parser cookie-session
 
+  npm install @types/express @types/cookie-session @types/body-parser
+
 Create build folder in root of Project
 
 Update tsc config file
