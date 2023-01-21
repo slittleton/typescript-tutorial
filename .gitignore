@@ -48,6 +48,8 @@ ts5-sorts/node_modules/
 ts6-dataFiles/node_modules/
 ts7-build-a-web-framework/node_modules/
 ts8-express/node_modules/
+ts9-decorators/node_modules/
+**/node_modules/
 
 # TypeScript v1 declaration files
 typings/
