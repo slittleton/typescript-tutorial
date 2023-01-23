@@ -41,3 +41,18 @@ so you may see some error message. Start the application again and the build fol
 should now have content and the error messages should be gone
 
 
+
+
+
+------------------------------------
+Decorators
+
+enable decorators in tsconfig file
+
+    "experimentalDecorators": true,                   
+    "emitDecoratorMetadata": true,  
+
+
+install the reflect-metadata library
+
+  npm install reflect-metadata
