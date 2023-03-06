@@ -1,0 +1,87 @@
+
+
+========================
+===== NESTJS NOTES =====
+========================
+notes for setting up a nest js porject
+
+
+
+=========================
+===== PROJECT SETUP =====
+=========================
+install cli for nestjs
+
+  npm install -g @nestjs/cli
+
+probably use npm to install as package manager
+
+
+start app with
+
+  npm run start
+
+
+in tsconfig add compilerOptions
+
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+  
+==========================================
+===== NestJS Components for a Server =====
+==========================================
+Pipe - validate data contained in the request
+
+Guard - authenticate user
+
+Controller - route the request to a particular function
+
+Service - Run some business logic
+
+Repository - access a database
+
+Module - wraps the above components for a chunk of functionality or the entire app
+
+==============
+== Nest CLI ==
+==============
+
+--- Start app
+
+  npm run start:dev
+
+
+--- disable esLint (if you want)
+comment out the contents of the module.exports object in the eslintrc.js file
+
+
+--- Generate a module (NOTE: do not include word module in the name of the module)
+
+  nest generate module <nameofmodule>
+
+
+--- Generate Controller in module (the --flat means dont create a new folder for controllers in module)
+
+  nest generate controller modulename/controllername --flat
+
+====================================
+== HTTP REQUEST Decorators ==
+====================================
+in controller you can get access to different parts of the http request with Decorators
+
+@Headers()
+@Param('id')
+@Query()
+@Body()
+
+
+== Pipes ==
+===========
+
+ValidationPipe must be added to main.ts
+then create folder in the module that is a DTO object
+use the DTO class as the type that a method in the controller expects to get
+so for example a POST request that expects a string would have a DTO called
+something like StringMessageDto
+then you use a decorator like @IsString() on a property called content for example, 
+to ensure that the type on a property in the class is a string
